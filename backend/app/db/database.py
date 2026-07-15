@@ -1,2 +1,12 @@
+from os import getenv
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
-Base=declarative_base()
+
+load_dotenv()
+
+DATABASE_URL = getenv("DATABASE_URL")
+
+engine = create_engine(DATABASE_URL, echo=True)
+
+Base = declarative_base()
